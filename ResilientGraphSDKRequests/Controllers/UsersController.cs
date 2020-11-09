@@ -27,5 +27,13 @@ namespace ResilientGraphSDKRequests.Controllers
             var userNames = await _graphClient.GetUsers();
             return Ok(userNames);
         }
+
+        [HttpGet]
+        [Route("/users/{userId}")]
+        public async Task<IActionResult> GetById([FromRoute] string userId)
+        {
+            var userNames = await _graphClient.GetUserById(userId);
+            return Ok(userNames);
+        }
     }
 }

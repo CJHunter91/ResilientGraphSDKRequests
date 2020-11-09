@@ -8,5 +8,6 @@ namespace ResilientGraphSDKRequests.ServiceClients
     public interface IMSGraphServiceClientAdaptor
     {
         Task<IEnumerable<string>> GetUsers();
+        Task<string> GetUserById(string userId);
     }
 }

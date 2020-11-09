@@ -20,7 +20,13 @@ namespace ResilientGraphSDKRequests.ServiceClients
         public async Task<IEnumerable<string>> GetUsers()
         {
             var usersPage = await _graphServiceClient.Users.Request().GetAsync();
-            return usersPage.CurrentPage.Select(user => user.UserPrincipalName);
+            return usersPage.CurrentPage.Select(user => user.Id);
+        }
+
+        public async Task<string> GetUserById(string userId)
+        {
+            var user = await _graphServiceClient.Users[userId].Request().GetAsync();
+            return user.UserPrincipalName;
         }
     }
 
